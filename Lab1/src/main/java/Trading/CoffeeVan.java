@@ -6,9 +6,11 @@ import Trading.Exceptions.VanTotalVolumeOverflow;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+
 
 public class CoffeeVan {
-    private ArrayList<CoffeeBox> products;
+    private List<CoffeeBox> products;
     private int maxVolume;
     private double maxCost;
 
@@ -26,7 +28,7 @@ public class CoffeeVan {
         this.fill(products);
     }
 
-    public ArrayList<CoffeeBox> getProducts() {
+    public List<CoffeeBox> getProducts() {
         return products;
     }
 

@@ -3,9 +3,10 @@ package Trading;
 import Items.*;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class CoffeeSearcher {
-    private LinkedList<CoffeeItem> items;
+    private List<CoffeeItem> items;
 
     public CoffeeSearcher(CoffeeBox... boxes) {
         items = new LinkedList<>();
@@ -88,7 +89,7 @@ public class CoffeeSearcher {
         return this;
     }
 
-    public LinkedList<CoffeeItem> get() {
+    public List<CoffeeItem> get() {
         return items;
     }
 }
