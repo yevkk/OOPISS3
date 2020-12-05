@@ -158,4 +158,31 @@ public class CoffeeVanTest {
         Assertions.assertEquals(3, van.getProducts().indexOf(boxes[4]));
     }
 
+    @Test
+    public void seraching() throws VanOverflow{
+        int maxVolume = (int) (100000 + 20000 * Math.random());
+        double maxCost = 100000 + 20000 * Math.random();
+        CoffeeBox[] boxes = {
+                // 461 / 350 = 1.32
+                new CoffeeBox(new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.BEANS, CoffeePackaging.JAR, 350), 30),
+                // 11 / 10 = 1.1
+                new CoffeeBox(new CoffeeItem(CoffeeSort.ROBUSTA, CoffeeSubstance.INSTANT, CoffeePackaging.BAGS, 10), 250),
+                // 354 / 400 = 0.885
+                new CoffeeBox(new CoffeeItem(CoffeeSort.ARABICA, CoffeeSubstance.GROUND, CoffeePackaging.JAR, 400), 10),
+                // 13.4 / 7 = 1.91
+                new CoffeeBox(new CoffeeItem(CoffeeSort.LIBERICA, CoffeeSubstance.INSTANT, CoffeePackaging.BAGS, 7), 300),
+                // 13.25 / 10 = 1.33
+                new CoffeeBox(new CoffeeItem(CoffeeSort.ARABICA, CoffeeSubstance.GROUND, CoffeePackaging.BAGS, 10), 500)
+        };
+
+        var van = new CoffeeVan(maxVolume, maxCost, boxes);
+        var searchResult = van.searchItems().filterBySort(CoffeeSort.ARABICA).get();
+
+        Assertions.assertTrue(searchResult.contains(boxes[2].getItem()));
+        Assertions.assertTrue(searchResult.contains(boxes[4].getItem()));
+
+        Assertions.assertFalse(searchResult.contains(boxes[0].getItem()));
+        Assertions.assertFalse(searchResult.contains(boxes[1].getItem()));
+        Assertions.assertFalse(searchResult.contains(boxes[3].getItem()));
+    }
 }

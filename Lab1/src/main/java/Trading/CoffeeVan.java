@@ -69,4 +69,8 @@ public class CoffeeVan {
 
         products.sort(comp);
     }
+
+    public CoffeeSearcher searchItems() {
+        return new CoffeeSearcher(products.toArray(new CoffeeBox[0]));
+    }
 }
