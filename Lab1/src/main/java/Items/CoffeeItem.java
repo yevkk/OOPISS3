@@ -7,6 +7,10 @@ public class CoffeeItem {
     private final int volume;
 
     public CoffeeItem(CoffeeSort sort, CoffeeSubstance substance, CoffeePackaging packaging, int volume) {
+        if (volume < 0) {
+            throw new IllegalArgumentException("volume should have non-negative value");
+        }
+
         this.sort = sort;
         this.substance = substance;
         this.packaging = packaging;
