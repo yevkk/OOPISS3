@@ -6,11 +6,11 @@ public enum CoffeePackaging {
 
     public double price(int volume) {
         if (volume < 0) {
-            throw new IllegalArgumentException("volume should have be non-negative value");
+            throw new IllegalArgumentException("volume should have non-negative value");
         }
         return switch (this) {
-            case JAR -> 5;
-            case BAGS -> 20 + (double) volume / 100;
+            case BAGS -> 5;
+            case JAR -> 20 + (double) volume / 100;
         };
     }
 }
