@@ -9,8 +9,8 @@ public class CoffeePackagingTest {
     public void BagsPriceTest() {
         CoffeePackaging packaging = CoffeePackaging.BAGS;
 
-        Assertions.assertEquals(packaging.price((int) (100 * Math.random())), 5);
-        Assertions.assertEquals(packaging.price((int) (100 * Math.random())), 5);
+        Assertions.assertEquals(5, packaging.price((int) (100 * Math.random())));
+        Assertions.assertEquals(5, packaging.price((int) (100 * Math.random())));
         Assertions.assertThrows(IllegalArgumentException.class, () -> packaging.price(-(int) (100 * Math.random())));
     }
 
@@ -19,8 +19,8 @@ public class CoffeePackagingTest {
         CoffeePackaging packaging = CoffeePackaging.JAR;
         int volume = (int) (100 * Math.random());
 
-        Assertions.assertEquals(packaging.price(volume), 20 + (double) volume / 100);
-        Assertions.assertEquals(packaging.price(volume * 4), 20 + 4 * (double) volume/ 100);
+        Assertions.assertEquals(20 + (double) volume / 100, packaging.price(volume));
+        Assertions.assertEquals(20 + 4 * (double) volume/ 100, packaging.price(volume * 4));
         Assertions.assertThrows(IllegalArgumentException.class, () -> packaging.price(-volume));
     }
 }

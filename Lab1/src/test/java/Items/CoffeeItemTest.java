@@ -13,11 +13,11 @@ public class CoffeeItemTest {
 
         var item = new CoffeeItem(sort, substance, packaging, volume);
 
-        Assertions.assertEquals(item.getSort(), sort);
-        Assertions.assertEquals(item.getSubstance(), substance);
-        Assertions.assertEquals(item.getPackaging(), packaging);
-        Assertions.assertEquals(item.getVolume(), volume);
-        Assertions.assertEquals(item.price(), 354);
+        Assertions.assertEquals(sort, item.getSort());
+        Assertions.assertEquals(substance, item.getSubstance());
+        Assertions.assertEquals(packaging, item.getPackaging());
+        Assertions.assertEquals(volume, item.getVolume());
+        Assertions.assertEquals(354, item.price());
     }
 
     @Test
@@ -29,11 +29,11 @@ public class CoffeeItemTest {
 
         var item = new CoffeeItem(sort, substance, packaging, volume);
 
-        Assertions.assertEquals(item.getSort(), sort);
-        Assertions.assertEquals(item.getSubstance(), substance);
-        Assertions.assertEquals(item.getPackaging(), packaging);
-        Assertions.assertEquals(item.getVolume(), volume);
-        Assertions.assertEquals(item.price(), 10);
+        Assertions.assertEquals(sort, item.getSort());
+        Assertions.assertEquals(substance, item.getSubstance());
+        Assertions.assertEquals(packaging, item.getPackaging());
+        Assertions.assertEquals(volume, item.getVolume());
+        Assertions.assertEquals(10, item.price());
     }
 
     @Test
@@ -45,11 +45,11 @@ public class CoffeeItemTest {
 
         var item = new CoffeeItem(sort, substance, packaging, volume);
 
-        Assertions.assertEquals(item.getSort(), sort);
-        Assertions.assertEquals(item.getSubstance(), substance);
-        Assertions.assertEquals(item.getPackaging(), packaging);
-        Assertions.assertEquals(item.getVolume(), volume);
-        Assertions.assertEquals(item.price(), 548.5);
+        Assertions.assertEquals(sort, item.getSort());
+        Assertions.assertEquals(substance, item.getSubstance());
+        Assertions.assertEquals(packaging, item.getPackaging());
+        Assertions.assertEquals(volume, item.getVolume());
+        Assertions.assertEquals(548.5, item.price());
     }
 
     @Test

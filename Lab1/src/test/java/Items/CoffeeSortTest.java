@@ -19,8 +19,8 @@ public class CoffeeSortTest {
         CoffeeSort sort = CoffeeSort.ARABICA;
         int volume = (int) (500 * Math.random());
 
-        Assertions.assertEquals(sort.price(volume), 75. * volume / 100);
-        Assertions.assertEquals(sort.price(volume * 2), 75. * volume * 2 / 100);
+        Assertions.assertEquals(75. * volume / 100, sort.price(volume));
+        Assertions.assertEquals(75. * volume * 2 / 100, sort.price(volume * 2));
         Assertions.assertThrows(IllegalArgumentException.class, () -> sort.price(-volume));
     }
 
@@ -29,8 +29,8 @@ public class CoffeeSortTest {
         CoffeeSort sort = CoffeeSort.LIBERICA;
         int volume = (int) (500 * Math.random());
 
-        Assertions.assertEquals(sort.price(volume), 100. * volume / 100);
-        Assertions.assertEquals(sort.price(volume * 2), 100. * volume * 2 / 100);
+        Assertions.assertEquals(100. * volume / 100, sort.price(volume));
+        Assertions.assertEquals(100. * volume * 2 / 100, sort.price(volume * 2));
         Assertions.assertThrows(IllegalArgumentException.class, () -> sort.price(-volume));
     }
 
@@ -39,8 +39,8 @@ public class CoffeeSortTest {
         CoffeeSort sort = CoffeeSort.BOURBON;
         int volume = (int) (500 * Math.random());
 
-        Assertions.assertEquals(sort.price(volume), 125. * volume / 100);
-        Assertions.assertEquals(sort.price(volume * 2), 125. * volume * 2 / 100);
+        Assertions.assertEquals(125. * volume / 100, sort.price(volume));
+        Assertions.assertEquals(125. * volume * 2 / 100, sort.price(volume * 2));
         Assertions.assertThrows(IllegalArgumentException.class, () -> sort.price(-volume));
     }
 }
