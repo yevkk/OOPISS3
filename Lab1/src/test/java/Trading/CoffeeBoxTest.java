@@ -1,7 +1,7 @@
 package Trading;
 
 import Items.*;
-import Trading.Exceptions.EmptyCoffeBox;
+import Trading.Exceptions.EmptyCoffeeBox;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -47,7 +47,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void ItemConsumingTest() throws EmptyCoffeBox {
+    public void ItemConsumingTest() throws EmptyCoffeeBox {
         int number = 10;
 
         var box = new CoffeeBox(new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350), number);
@@ -59,7 +59,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void RunningOutOfItemsTest() throws EmptyCoffeBox {
+    public void RunningOutOfItemsTest() throws EmptyCoffeeBox {
         int number = 2;
 
         var box = new CoffeeBox(new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350), number);
@@ -68,7 +68,7 @@ public class CoffeeBoxTest {
             box.consumeItem();
         }
 
-        Assertions.assertThrows(EmptyCoffeBox.class, box::consumeItem);
+        Assertions.assertThrows(EmptyCoffeeBox.class, box::consumeItem);
     }
 
     @Test

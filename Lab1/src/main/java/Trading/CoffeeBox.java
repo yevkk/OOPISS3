@@ -1,7 +1,7 @@
 package Trading;
 
 import Items.CoffeeItem;
-import Trading.Exceptions.EmptyCoffeBox;
+import Trading.Exceptions.EmptyCoffeeBox;
 
 public class CoffeeBox {
     private final CoffeeItem item;
@@ -31,11 +31,11 @@ public class CoffeeBox {
         return number * item.getVolume();
     }
 
-    public void consumeItem() throws EmptyCoffeBox {
+    public void consumeItem() throws EmptyCoffeeBox {
         if (number > 0) {
             number--;
         } else {
-            throw new EmptyCoffeBox();
+            throw new EmptyCoffeeBox();
         }
     }
 }
