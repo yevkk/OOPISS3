@@ -8,10 +8,10 @@ public enum CoffeeSort {
             throw new IllegalArgumentException("volume should have non-negative value");
         }
         return switch (this) {
-            case ROBUSTA -> 50 * (double) volume / 100;
-            case ARABICA -> 75 * (double) volume / 100;
-            case LIBERICA -> 100 * (double) volume / 100;
-            case BOURBON -> 125 * (double) volume / 100;
+            case ROBUSTA -> 50. * volume / 100;
+            case ARABICA -> 75. * volume / 100;
+            case LIBERICA -> 100. * volume / 100;
+            case BOURBON -> 125. * volume / 100;
         };
     }
 }
