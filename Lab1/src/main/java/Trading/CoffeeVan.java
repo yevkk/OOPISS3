@@ -30,6 +30,14 @@ public class CoffeeVan {
         return products;
     }
 
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public double getMaxCost() {
+        return maxCost;
+    }
+
     public void fill(CoffeeBox... products) throws VanOverflow {
         for (var item : products) {
             addProduct(item);
