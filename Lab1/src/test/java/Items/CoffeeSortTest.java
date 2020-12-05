@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class CoffeeSortTest {
     @Test
-    public void RobustaPriceTest() {
+    public void robustaPrice() {
         CoffeeSort sort = CoffeeSort.ROBUSTA;
         int volume = (int) (500 * Math.random());
 
@@ -15,7 +15,7 @@ public class CoffeeSortTest {
     }
 
     @Test
-    public void ArabicaPriceTest() {
+    public void arabicaPrice() {
         CoffeeSort sort = CoffeeSort.ARABICA;
         int volume = (int) (500 * Math.random());
 
@@ -25,7 +25,7 @@ public class CoffeeSortTest {
     }
 
     @Test
-    public void LibericaPriceTest() {
+    public void libericaPrice() {
         CoffeeSort sort = CoffeeSort.LIBERICA;
         int volume = (int) (500 * Math.random());
 
@@ -35,7 +35,7 @@ public class CoffeeSortTest {
     }
 
     @Test
-    public void BourbonPriceTest() {
+    public void bourbonPrice() {
         CoffeeSort sort = CoffeeSort.BOURBON;
         int volume = (int) (500 * Math.random());
 

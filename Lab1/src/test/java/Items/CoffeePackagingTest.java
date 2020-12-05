@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 public class CoffeePackagingTest {
 
     @Test
-    public void BagsPriceTest() {
+    public void bagsPrice() {
         CoffeePackaging packaging = CoffeePackaging.BAGS;
 
         Assertions.assertEquals(5, packaging.price((int) (100 * Math.random())));
@@ -15,7 +15,7 @@ public class CoffeePackagingTest {
     }
 
     @Test
-    public void JarPriceTest() {
+    public void jarPrice() {
         CoffeePackaging packaging = CoffeePackaging.JAR;
         int volume = (int) (100 * Math.random());
 

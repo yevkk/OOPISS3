@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class CoffeeSubstanceTest {
     @Test
-    public void BeansPriceMultiplierTest() {
+    public void beansPriceMultiplier() {
         CoffeeSubstance substance = CoffeeSubstance.BEANS;
         double price = Math.random() * 1000;
 
@@ -15,7 +15,7 @@ public class CoffeeSubstanceTest {
     }
 
     @Test
-    public void GroundPriceMultiplierTest() {
+    public void groundPriceMultiplier() {
         CoffeeSubstance substance = CoffeeSubstance.GROUND;
         double price = Math.random() * 1000;
 
@@ -25,7 +25,7 @@ public class CoffeeSubstanceTest {
     }
 
     @Test
-    public void InstantPriceMultiplierTest() {
+    public void instantPriceMultiplier() {
         CoffeeSubstance substance = CoffeeSubstance.INSTANT;
         double price = Math.random() * 1000;
 

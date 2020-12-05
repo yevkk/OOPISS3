@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class CoffeeItemTest {
     @Test
-    public void ArabicaGroundJarTest() {
+    public void arabicaGroundJarCreation() {
         var sort = CoffeeSort.ARABICA;
         var substance = CoffeeSubstance.GROUND;
         var packaging = CoffeePackaging.JAR;
@@ -21,7 +21,7 @@ public class CoffeeItemTest {
     }
 
     @Test
-    public void RobustaBeansBagsTest() {
+    public void robustaBeansBagsCreation() {
         var sort = CoffeeSort.ROBUSTA;
         var substance = CoffeeSubstance.BEANS;
         var packaging = CoffeePackaging.BAGS;
@@ -37,7 +37,7 @@ public class CoffeeItemTest {
     }
 
     @Test
-    public void BourbonInstantJarTest() {
+    public void bourbonInstantJarCreation() {
         var sort = CoffeeSort.BOURBON;
         var substance = CoffeeSubstance.INSTANT;
         var packaging = CoffeePackaging.JAR;
@@ -53,7 +53,7 @@ public class CoffeeItemTest {
     }
 
     @Test
-    public void NegativeVolumeTest() {
+    public void negativeVolume() {
         var sort = CoffeeSort.BOURBON;
         var substance = CoffeeSubstance.INSTANT;
         var packaging = CoffeePackaging.JAR;
