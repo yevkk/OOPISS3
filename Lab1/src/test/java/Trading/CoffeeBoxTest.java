@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class CoffeeBoxTest {
     @Test
-    public void ArabicaGroundJar10Test() {
+    public void arabicaGroundJar10() {
         var item = new CoffeeItem(CoffeeSort.ARABICA, CoffeeSubstance.GROUND, CoffeePackaging.JAR, 400);
         int number = 10;
 
@@ -20,7 +20,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void RobustaBeansBags250Test() {
+    public void robustaBeansBags250() {
         var item = new CoffeeItem(CoffeeSort.ROBUSTA, CoffeeSubstance.BEANS, CoffeePackaging.BAGS, 10);
         int number = 250;
 
@@ -33,7 +33,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void BourbonInstantJar30Test() {
+    public void bourbonInstantJar30() {
         var item = new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350);
         int number = 30;
 
@@ -47,7 +47,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void ItemConsumingTest() throws EmptyCoffeeBox {
+    public void itemConsuming() throws EmptyCoffeeBox {
         int number = 10;
 
         var box = new CoffeeBox(new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350), number);
@@ -59,7 +59,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void RunningOutOfItemsTest() throws EmptyCoffeeBox {
+    public void runningOutOfItems() throws EmptyCoffeeBox {
         int number = 2;
 
         var box = new CoffeeBox(new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350), number);
@@ -72,7 +72,7 @@ public class CoffeeBoxTest {
     }
 
     @Test
-    public void NegativeNumberTest() {
+    public void negativeNumber() {
         var item = new CoffeeItem(CoffeeSort.BOURBON, CoffeeSubstance.INSTANT, CoffeePackaging.JAR, 350);
         int number = - 30;
 
