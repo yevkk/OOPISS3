@@ -52,7 +52,7 @@ public class TariffHandler extends DefaultHandler {
         if (currentEnum != null) {
             switch (currentEnum) {
                 case PAYROLL:
-                    current.setName(str);
+                    current.setPayroll(Integer.parseInt(str));
                     break;
                 case CALLPRICE:
                     current.getCallPrice().add(Integer.parseInt(str));

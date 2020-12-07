@@ -2,6 +2,7 @@ package tariff;
 
 public enum TariffEnum {
     TARIFFS("tariffs"),
+    TARIFF("tariff"),
     NAME("name"),
     OPERATOR_NAME("operatorName"),
     PAYROLL("payroll"),
