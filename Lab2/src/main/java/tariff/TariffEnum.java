@@ -1,4 +1,4 @@
-package tariff.XMLparsers.sax;
+package tariff;
 
 public enum TariffEnum {
     TARIFFS("tariffs"),
