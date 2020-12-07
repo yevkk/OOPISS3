@@ -6,7 +6,6 @@ import tariff.XMLparsers.TariffsBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,7 +20,6 @@ public class TariffsDOMBuilder extends TariffsBuilder {
 
     public TariffsDOMBuilder() {
         super();
-        this.tariffs = new HashSet<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             documentBuilder = factory.newDocumentBuilder();
@@ -32,7 +30,7 @@ public class TariffsDOMBuilder extends TariffsBuilder {
 
     @Override
     public void buildTariffsSet(String filename) {
-        Document document = null;
+        Document document;
         try {
             document = documentBuilder.parse(filename);
             Element root = document.getDocumentElement();

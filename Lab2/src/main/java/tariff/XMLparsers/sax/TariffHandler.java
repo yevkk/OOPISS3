@@ -2,25 +2,25 @@ package tariff.XMLparsers.sax;
 
 import tariff.*;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class TariffHandler extends DefaultHandler {
-    private final Set<Tariff> tariffs;
+    private final List<Tariff> tariffs;
     private Tariff current = null;
     private TariffEnum currentEnum = null;
     private final EnumSet<TariffEnum> withText;
 
     public TariffHandler() {
-        tariffs = new HashSet<>();
+        tariffs = new ArrayList<>();
         withText = EnumSet.range(TariffEnum.PAYROLL, TariffEnum.JOINPRICE);
     }
 
-    public Set<Tariff> getTariffs() {
+    public List<Tariff> getTariffs() {
         return tariffs;
     }
 

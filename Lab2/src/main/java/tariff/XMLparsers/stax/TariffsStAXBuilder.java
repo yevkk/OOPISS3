@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashSet;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -18,7 +17,6 @@ public class TariffsStAXBuilder extends TariffsBuilder {
 
     public TariffsStAXBuilder() {
         super();
-        this.tariffs = new HashSet<>();
         inputFactory = XMLInputFactory.newInstance();
     }
 

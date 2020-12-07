@@ -2,12 +2,17 @@ package tariff.XMLparsers;
 
 import tariff.Tariff;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TariffsBuilder {
-    protected Set<Tariff> tariffs;
+    protected List<Tariff> tariffs;
 
-    public Set<Tariff> getTariffs() {
+    public TariffsBuilder() {
+        tariffs = new ArrayList<>();
+    }
+
+    public List<Tariff> getTariffs() {
         return tariffs;
     }
 
