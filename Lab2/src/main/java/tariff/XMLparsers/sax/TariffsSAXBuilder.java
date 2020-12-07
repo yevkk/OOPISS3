@@ -1,6 +1,5 @@
 package tariff.XMLparsers.sax;
 
-import tariff.Tariff;
 import tariff.XMLparsers.TariffsBuilder;
 
 import org.xml.sax.SAXException;
