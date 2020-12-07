@@ -1,20 +1,20 @@
 package tariff.XMLparsers.sax;
 
 import tariff.Tariff;
+import tariff.XMLparsers.TariffsBuilder;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.IOException;
-import java.util.Set;
 
-public class TariffsSAXBuilder {
-    private Set<Tariff> tariffs;
+public class TariffsSAXBuilder extends TariffsBuilder {
     private final TariffHandler handler;
     private XMLReader reader;
 
     public TariffsSAXBuilder() {
+        super();
         handler = new TariffHandler();
         try {
             reader = XMLReaderFactory.createXMLReader();
@@ -24,10 +24,7 @@ public class TariffsSAXBuilder {
         }
     }
 
-    public Set<Tariff> getTariffs() {
-        return tariffs;
-    }
-
+    @Override
     public void buildTariffsSet (String filename) {
         try {
             reader.parse(filename);
