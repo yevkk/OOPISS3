@@ -6,7 +6,7 @@
 //
 
 
-package com.example.tariffs;
+package tariff;
 
 import java.util.ArrayList;
 import java.util.List;

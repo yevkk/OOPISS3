@@ -6,7 +6,7 @@
 //
 
 
-package com.example.tariffs;
+package tariff;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

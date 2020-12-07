@@ -6,7 +6,7 @@
 //
 
 
-package com.example.tariffs;
+package tariff;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "tariff"
 })
-@XmlRootElement(name = "TariffItems")
+@XmlRootElement(name = "tariff")
 public class Tariffs {
 
     protected List<Tariff> tariff;
