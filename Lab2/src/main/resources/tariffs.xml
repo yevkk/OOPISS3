@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="Tariff.xsd">
+         xmlns="urn:Lab.Namespace"
+         xsi:schemaLocation="urn:Lab.Namespace Tariff.xsd">
     <tariff name="S" operatorName="Vodafone">
         <payroll>85</payroll>
         <callPrice>1</callPrice>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.example.com/tariffs"
-           xmlns:lab="http://www.example.com/tariffs"
-           elementFormDefault="qualified">
+            targetNamespace="urn:Lab.Namespace"
+            xmlns:lab="urn:Lab.Namespace"
+            elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.w3c.org/2001/XMLSchema ">
     <xsd:element name="tariffs">
         <xsd:complexType>
             <xsd:sequence>
@@ -37,29 +38,29 @@
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="tariffParameters" type="lab:TariffParameters" />
+            <xsd:element name="tariffParameters" type="lab:TariffParameters"/>
         </xsd:sequence>
         <xsd:attribute name="name" use="required">
             <xsd:simpleType>
                 <xsd:restriction base="xsd:ID"/>
             </xsd:simpleType>
         </xsd:attribute>
-        <xsd:attribute name="operatorName" type="xsd:string" use="required" />
+        <xsd:attribute name="operatorName" type="xsd:string" use="required"/>
     </xsd:complexType>
     <xsd:complexType name="TariffParameters">
         <xsd:sequence>
             <xsd:element name="favNumber">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:pattern value="[0]\d{9}" />
+                        <xsd:pattern value="[0]\d{9}"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="tariffication">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:enumeration value="12sec" />
-                        <xsd:enumeration value="min" />
+                        <xsd:enumeration value="12sec"/>
+                        <xsd:enumeration value="min"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
