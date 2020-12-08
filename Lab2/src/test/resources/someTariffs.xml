@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="urn:Lab.Namespace"
+         xsi:schemaLocation="urn:Lab.Namespace Tariff.xsd">
+    <tariff name="S" operatorName="O2">
+        <payroll>85</payroll>
+        <callPrice>1</callPrice>
+        <callPrice>2</callPrice>
+        <callPrice>5</callPrice>
+        <smsPrice>1</smsPrice>
+        <tariffParameters>
+            <favNumber>0778881122</favNumber>
+            <tariffication>min</tariffication>
+            <joinPrice>50</joinPrice>
+        </tariffParameters>
+    </tariff>
+    <tariff name="L" operatorName="O2">
+        <payroll>150</payroll>
+        <callPrice>0</callPrice>
+        <callPrice>1</callPrice>
+        <callPrice>4</callPrice>
+        <smsPrice>2</smsPrice>
+        <tariffParameters>
+            <favNumber>0991114433</favNumber>
+            <tariffication>min</tariffication>
+            <joinPrice>75</joinPrice>
+        </tariffParameters>
+    </tariff>
+    <tariff name="Plush" operatorName="Plus">
+        <payroll>50</payroll>
+        <callPrice>1</callPrice>
+        <callPrice>2</callPrice>
+        <callPrice>2</callPrice>
+        <smsPrice>1</smsPrice>
+        <tariffParameters>
+            <favNumber>0331231212</favNumber>
+            <tariffication>12sec</tariffication>
+            <joinPrice>15</joinPrice>
+        </tariffParameters>
+    </tariff>
+</tariffs>

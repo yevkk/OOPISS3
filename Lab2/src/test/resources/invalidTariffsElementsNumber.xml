@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="urn:Lab.Namespace"
+         xsi:schemaLocation="urn:Lab.Namespace Tariff.xsd">
+    <tariff name="L" operatorName="O2">
+        <payroll>150</payroll>
+        <callPrice>0</callPrice>
+        <smsPrice>2</smsPrice>
+        <tariffParameters>
+            <favNumber>0991114433</favNumber>
+            <tariffication>min</tariffication>
+            <joinPrice>75</joinPrice>
+        </tariffParameters>
+    </tariff>
+</tariffs>

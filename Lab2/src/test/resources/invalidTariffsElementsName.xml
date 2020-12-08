@@ -2,20 +2,9 @@
 <tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="urn:Lab.Namespace"
          xsi:schemaLocation="urn:Lab.Namespace Tariff.xsd">
-    <tariff name="S" operatorName="Vodafone">
-        <payroll>85</payroll>
-        <callPrice>1</callPrice>
-        <callPrice>2</callPrice>
-        <callPrice>5</callPrice>
-        <smsPrice>1</smsPrice>
-        <tariffParameters>
-            <favNumber>0778881122</favNumber>
-            <tariffication>min</tariffication>
-            <joinPrice>50</joinPrice>
-        </tariffParameters>
-    </tariff>
-    <tariff name="L" operatorName="Vodafone">
+    <tariff name="L" operatorName="O2">
         <payroll>150</payroll>
+        <additionalElement>15</additionalElement>
         <callPrice>0</callPrice>
         <callPrice>1</callPrice>
         <callPrice>4</callPrice>
