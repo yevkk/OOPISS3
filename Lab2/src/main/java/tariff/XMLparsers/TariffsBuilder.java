@@ -29,5 +29,5 @@ public abstract class TariffsBuilder {
         return tariffs;
     }
 
-    public abstract void buildTariffsSet(String filename);
+    public abstract void buildTariffsList(String filename);
 }

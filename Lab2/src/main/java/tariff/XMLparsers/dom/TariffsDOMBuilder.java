@@ -29,7 +29,7 @@ public class TariffsDOMBuilder extends TariffsBuilder {
     }
 
     @Override
-    public void buildTariffsSet(String filename) {
+    public void buildTariffsList(String filename) {
         Document document;
         try {
             document = documentBuilder.parse(filename);

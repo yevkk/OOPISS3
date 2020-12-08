@@ -24,7 +24,7 @@ public class TariffsSAXBuilder extends TariffsBuilder {
     }
 
     @Override
-    public void buildTariffsSet (String filename) {
+    public void buildTariffsList (String filename) {
         try {
             reader.parse(filename);
         } catch (SAXException e) {

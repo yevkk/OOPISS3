@@ -21,7 +21,7 @@ public class TariffsStAXBuilder extends TariffsBuilder {
     }
 
     @Override
-    public void buildTariffsSet(String filename) {
+    public void buildTariffsList(String filename) {
         FileInputStream inputStream = null;
         XMLStreamReader reader = null;
         String elementName;

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
 import javax.xml.transform.stream.StreamSource;
 
 public class TariffsXMLValidator {
@@ -15,10 +14,10 @@ public class TariffsXMLValidator {
             Schema schema = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema").newSchema(new File(schemaFilename));
             schema.newValidator().validate(new StreamSource(new File(sourceFilename)));
         } catch (SAXException e) {
-            System.out.println("SAX exception " + e);
+//            System.out.println("SAX exception " + e);
             return false;
         } catch (IOException e) {
-            System.out.println("I/O exception " + e);
+//            System.out.println("I/O exception " + e);
             return false;
         }
         return true;
