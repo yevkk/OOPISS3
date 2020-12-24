@@ -1,61 +1,14 @@
 package tariff.XMLparsers;
-import tariff.Tariff;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import tariff.Tariff;
 
 import java.util.List;
 
-class TariffsBuilderTest {
-    TariffsBuilder builder;
-    List<Tariff> tariffs;
-
-    @Test
-    public void emptySAX() {
-        checkEmpty("sax");
-    }
-
-    @Test
-    public void emptyDOM() {
-        checkEmpty("dom");
-    }
-
-    @Test
-    public void emptyStAX() {
-        checkEmpty("stax");
-    }
-
-    @Test
-    public void singleSAX() {
-        checkSingleElements("sax");
-    }
-
-    @Test
-    public void singleDOM() {
-        checkSingleElements("dom");
-    }
-
-    @Test
-    public void singleStAX() {
-        checkSingleElements("stax");
-    }
-
-    @Test
-    public void someSAX() {
-        checkSomeElements("sax");
-    }
-
-    @Test
-    public void someDOM() {
-        checkSomeElements("dom");
-    }
-
-    @Test
-    public void someStAX() {
-        checkSomeElements("stax");
-    }
-
-    private void checkEmpty(String typeParser) {
+public class BuilderTestHelper {
+    static TariffsBuilder builder;
+    static List<Tariff> tariffs;
+    static void checkEmpty(String typeParser) {
         builder = TariffsBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/emptyTariffs.xml");
         tariffs = builder.getTariffs();
@@ -63,7 +16,7 @@ class TariffsBuilderTest {
         Assertions.assertEquals(0, tariffs.size());
     }
 
-    private void checkSingleElements(String typeParser) {
+    static void checkSingleElements(String typeParser) {
         builder = TariffsBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/singleTariffs.xml");
         tariffs = builder.getTariffs();
@@ -83,7 +36,7 @@ class TariffsBuilderTest {
         Assertions.assertEquals(75, tariff.getTariffParameters().getJoinPrice());
     }
 
-    private void checkSomeElements(String typeParser) {
+    static void checkSomeElements(String typeParser) {
         builder = TariffsBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/someTariffs.xml");
         tariffs = builder.getTariffs();
