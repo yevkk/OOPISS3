@@ -1,15 +1,15 @@
-package tariff.XMLparsers;
+package XMLparsers;
 
-import tariff.XMLparsers.dom.TariffsDOMBuilder;
-import tariff.XMLparsers.sax.TariffsSAXBuilder;
-import tariff.XMLparsers.stax.TariffsStAXBuilder;
+import XMLparsers.sax.TariffsSAXBuilder;
+import XMLparsers.dom.TariffsDOMBuilder;
+import XMLparsers.stax.TariffsStAXBuilder;
 
-public class TariffsBuilderFactory {
+public class XMLBuilderFactory {
     private enum TypeParser {
         SAX, STAX, DOM
     }
 
-    public static TariffsBuilder newInstance(String typeParser) {
+    public static XMLBuilder newInstance(String typeParser) {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case SAX:

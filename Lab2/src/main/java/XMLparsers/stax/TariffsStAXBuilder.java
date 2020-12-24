@@ -1,7 +1,7 @@
-package tariff.XMLparsers.stax;
+package XMLparsers.stax;
 
 import tariff.*;
-import tariff.XMLparsers.TariffsBuilder;
+import XMLparsers.XMLBuilder;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-public class TariffsStAXBuilder extends TariffsBuilder {
+public class TariffsStAXBuilder extends XMLBuilder {
     private XMLInputFactory inputFactory;
 
     public TariffsStAXBuilder() {

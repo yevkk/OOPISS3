@@ -1,4 +1,4 @@
-package tariff.XMLparsers.validator;
+package XMLparsers.validator;
 
 import org.xml.sax.SAXException;
 
@@ -8,7 +8,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.transform.stream.StreamSource;
 
-public class TariffsXMLValidator {
+public class XMLValidator {
     public static boolean validate(String sourceFilename, String schemaFilename) {
         try {
             Schema schema = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema").newSchema(new File(schemaFilename));

@@ -1,6 +1,6 @@
-package tariff.XMLparsers.sax;
+package XMLparsers.sax;
 
-import tariff.XMLparsers.TariffsBuilder;
+import XMLparsers.XMLBuilder;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -8,7 +8,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.IOException;
 
-public class TariffsSAXBuilder extends TariffsBuilder {
+public class TariffsSAXBuilder extends XMLBuilder {
     private final TariffHandler handler;
     private XMLReader reader;
 

@@ -1,8 +1,8 @@
-package tariff.XMLparsers.dom;
+package XMLparsers.dom;
 
+import XMLparsers.XMLBuilder;
 import org.xml.sax.SAXException;
 import tariff.*;
-import tariff.XMLparsers.TariffsBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class TariffsDOMBuilder extends TariffsBuilder {
+public class TariffsDOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
     private DocumentBuilder documentBuilder;
 
     public TariffsDOMBuilder() {

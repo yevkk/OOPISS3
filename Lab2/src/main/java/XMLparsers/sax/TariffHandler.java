@@ -1,4 +1,4 @@
-package tariff.XMLparsers.sax;
+package XMLparsers.sax;
 
 import tariff.*;
 

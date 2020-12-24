@@ -1,15 +1,17 @@
 package tariff.XMLparsers;
 
+import XMLparsers.XMLBuilderFactory;
+import XMLparsers.XMLBuilder;
 import org.junit.jupiter.api.Assertions;
 import tariff.Tariff;
 
 import java.util.List;
 
 public class BuilderTestHelper {
-    static TariffsBuilder builder;
+    static XMLBuilder builder;
     static List<Tariff> tariffs;
     static void checkEmpty(String typeParser) {
-        builder = TariffsBuilderFactory.newInstance(typeParser);
+        builder = XMLBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/emptyTariffs.xml");
         tariffs = builder.getTariffs();
 
@@ -17,7 +19,7 @@ public class BuilderTestHelper {
     }
 
     static void checkSingleElements(String typeParser) {
-        builder = TariffsBuilderFactory.newInstance(typeParser);
+        builder = XMLBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/singleTariffs.xml");
         tariffs = builder.getTariffs();
 
@@ -37,7 +39,7 @@ public class BuilderTestHelper {
     }
 
     static void checkSomeElements(String typeParser) {
-        builder = TariffsBuilderFactory.newInstance(typeParser);
+        builder = XMLBuilderFactory.newInstance(typeParser);
         builder.buildTariffsList("src/test/resources/someTariffs.xml");
         tariffs = builder.getTariffs();
 
