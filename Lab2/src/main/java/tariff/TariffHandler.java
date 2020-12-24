@@ -1,6 +1,4 @@
-package XMLparsers.sax;
-
-import tariff.*;
+package tariff;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

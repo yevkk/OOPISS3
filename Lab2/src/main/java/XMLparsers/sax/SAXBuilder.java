@@ -5,14 +5,15 @@ import XMLparsers.XMLBuilder;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
+import tariff.TariffHandler;
 
 import java.io.IOException;
 
-public class TariffsSAXBuilder extends XMLBuilder {
+public class SAXBuilder extends XMLBuilder {
     private final TariffHandler handler;
     private XMLReader reader;
 
-    public TariffsSAXBuilder() {
+    public SAXBuilder() {
         super();
         handler = new TariffHandler();
         try {
@@ -24,7 +25,7 @@ public class TariffsSAXBuilder extends XMLBuilder {
     }
 
     @Override
-    public void buildTariffsList (String filename) {
+    public void buildList(String filename) {
         try {
             reader.parse(filename);
         } catch (SAXException e) {

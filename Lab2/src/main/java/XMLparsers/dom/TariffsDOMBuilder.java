@@ -29,7 +29,7 @@ public class TariffsDOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
     }
 
     @Override
-    public void buildTariffsList(String filename) {
+    public void buildList(String filename) {
         Document document;
         try {
             document = documentBuilder.parse(filename);

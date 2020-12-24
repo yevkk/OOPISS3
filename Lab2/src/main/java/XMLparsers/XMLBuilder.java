@@ -11,7 +11,7 @@ public abstract class XMLBuilder <T extends Comparable<T>> {
         list = new ArrayList<>();
     }
 
-    public List<T> getTariffs() {
+    public List<T> getList() {
         return list;
     }
 
@@ -19,5 +19,5 @@ public abstract class XMLBuilder <T extends Comparable<T>> {
         Collections.sort(list);
     }
 
-    public abstract void buildTariffsList(String filename);
+    public abstract void buildList(String filename);
 }

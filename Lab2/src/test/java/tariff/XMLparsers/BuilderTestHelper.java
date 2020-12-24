@@ -12,16 +12,16 @@ public class BuilderTestHelper {
     static List<Tariff> tariffs;
     static void checkEmpty(String typeParser) {
         builder = XMLBuilderFactory.newInstance(typeParser);
-        builder.buildTariffsList("src/test/resources/emptyTariffs.xml");
-        tariffs = builder.getTariffs();
+        builder.buildList("src/test/resources/emptyTariffs.xml");
+        tariffs = builder.getList();
 
         Assertions.assertEquals(0, tariffs.size());
     }
 
     static void checkSingleElements(String typeParser) {
         builder = XMLBuilderFactory.newInstance(typeParser);
-        builder.buildTariffsList("src/test/resources/singleTariffs.xml");
-        tariffs = builder.getTariffs();
+        builder.buildList("src/test/resources/singleTariffs.xml");
+        tariffs = builder.getList();
 
         Assertions.assertEquals(1, tariffs.size());
 
@@ -40,8 +40,8 @@ public class BuilderTestHelper {
 
     static void checkSomeElements(String typeParser) {
         builder = XMLBuilderFactory.newInstance(typeParser);
-        builder.buildTariffsList("src/test/resources/someTariffs.xml");
-        tariffs = builder.getTariffs();
+        builder.buildList("src/test/resources/someTariffs.xml");
+        tariffs = builder.getList();
 
         Assertions.assertEquals(3, tariffs.size());
         Tariff tariff;

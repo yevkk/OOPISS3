@@ -1,6 +1,6 @@
 package XMLparsers;
 
-import XMLparsers.sax.TariffsSAXBuilder;
+import XMLparsers.sax.SAXBuilder;
 import XMLparsers.dom.TariffsDOMBuilder;
 import XMLparsers.stax.TariffsStAXBuilder;
 
@@ -13,7 +13,7 @@ public class XMLBuilderFactory {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case SAX:
-                return new TariffsSAXBuilder();
+                return new SAXBuilder();
             case DOM:
                 return new TariffsDOMBuilder();
             case STAX:
