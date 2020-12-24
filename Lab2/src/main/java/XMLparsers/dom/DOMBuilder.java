@@ -4,7 +4,6 @@ import XMLparsers.BaseHandler;
 import XMLparsers.XMLBuilder;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
-import tariff.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class DOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
                 for (String str : handler.attrs) {
                     handler.proceedElement(str, element.getAttribute(str));
                 }
-                buildMainElement(element);
+                buildElement(element);
                 handler.saveMainElement();
             }
         } catch (SAXException e) {
@@ -56,7 +55,7 @@ public class DOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
         list = (List<T>) handler.getList();
     }
 
-    private void buildMainElement(Element element) {
+    private void buildElement(Element element) {
         NodeList childNodes = element.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             if (childNodes.item(i).getNodeType() != Node.ELEMENT_NODE) {
@@ -64,7 +63,7 @@ public class DOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
             }
             String childName = childNodes.item(i).getNodeName();
             if (handler.complexElements.contains(childName)) {
-                buildMainElement((Element) childNodes.item(i));
+                buildElement((Element) childNodes.item(i));
             } else {
                 for (String str : getElementsTextContent(element, childName)){
                     handler.proceedElement(childName, str);
