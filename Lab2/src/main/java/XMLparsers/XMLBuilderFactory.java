@@ -2,7 +2,7 @@ package XMLparsers;
 
 import XMLparsers.sax.SAXBuilder;
 import XMLparsers.dom.DOMBuilder;
-//import XMLparsers.stax.TariffsStAXBuilder;
+import XMLparsers.stax.StAXBuilder;
 
 public class XMLBuilderFactory {
     private enum TypeParser {
@@ -16,8 +16,8 @@ public class XMLBuilderFactory {
                 return new SAXBuilder<>(handler);
             case DOM:
                 return new DOMBuilder<>(handler);
-//            case STAX:
-//                return new TariffsStAXBuilder();
+            case STAX:
+                return new StAXBuilder<>(handler);
         }
         throw new EnumConstantNotPresentException(type.getClass(), type.name());
     }

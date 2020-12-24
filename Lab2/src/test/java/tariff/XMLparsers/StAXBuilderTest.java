@@ -1,7 +1,7 @@
 package tariff.XMLparsers;
 import org.junit.jupiter.api.Test;
 
-class TariffsStAXBuilderTest {
+class StAXBuilderTest {
     @Test
     public void empty() {
         BuilderTestHelper.checkEmpty("stax");
