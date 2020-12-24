@@ -11,7 +11,7 @@ public abstract class XMLBuilder <T extends Comparable<T>> {
         list = new ArrayList<>();
     }
 
-    public List<?> getList() {
+    public List<T> getList() {
         return list;
     }
 
