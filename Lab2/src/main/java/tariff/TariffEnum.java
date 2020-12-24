@@ -4,7 +4,7 @@ public enum TariffEnum {
     TARIFFS("tariffs"),
     TARIFF("tariff"),
     NAME("name"),
-    OPERATOR_NAME("operatorName"),
+    OPERATORNAME("operatorName"),
     PAYROLL("payroll"),
     CALLPRICE("callPrice"),
     SMSPRICE("smsPrice"),

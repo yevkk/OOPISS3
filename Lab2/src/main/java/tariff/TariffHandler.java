@@ -1,6 +1,7 @@
 package tariff;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -13,10 +14,19 @@ public class TariffHandler extends BaseHandler {
     private TariffEnum currentEnum = null;
     private final EnumSet<TariffEnum> withText;
 
+    @Override
+    public String mainElementName() {
+        return "tariff";
+    }
+
     public TariffHandler() {
         super();
         tariffs = new ArrayList<>();
+
         withText = EnumSet.range(TariffEnum.PAYROLL, TariffEnum.JOINPRICE);
+
+        attrs = new ArrayList<>(Arrays.asList("name", "operatorName"));
+        complexElements = new ArrayList<>(Arrays.asList("tariffParameters"));
     }
 
     @Override
@@ -27,10 +37,9 @@ public class TariffHandler extends BaseHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         if (localName.equals("tariff")) {
-            current = new Tariff();
+            createMainElement();
             current.setName(attributes.getValue(0));
             current.setOperatorName(attributes.getValue(1));
-            current.setTariffParameters(new TariffParameters());
         } else {
             TariffEnum tmp = TariffEnum.valueOf(localName.toUpperCase());
             if (withText.contains(tmp)) {
@@ -55,13 +64,14 @@ public class TariffHandler extends BaseHandler {
         currentEnum = null;
     }
 
+    @Override
     public void proceedElement(String elemLocalName, String elemValue) {
         TariffEnum element = TariffEnum.valueOf(elemLocalName.toUpperCase());
         switch (element) {
             case NAME:
                 current.setName(elemValue);
                 break;
-            case OPERATOR_NAME:
+            case OPERATORNAME:
                 current.setOperatorName(elemValue);
                 break;
             case PAYROLL:
@@ -88,6 +98,13 @@ public class TariffHandler extends BaseHandler {
         }
     }
 
+    @Override
+    public void createMainElement() {
+        current = new Tariff();
+        current.setTariffParameters(new TariffParameters());
+    }
+
+    @Override
     public void saveMainElement() {
         tariffs.add(current);
     }

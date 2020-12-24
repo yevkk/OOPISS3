@@ -2,6 +2,7 @@ package XMLparsers.dom;
 
 import XMLparsers.BaseHandler;
 import XMLparsers.XMLBuilder;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 import tariff.*;
 
@@ -16,11 +17,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class TariffsDOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
+public class DOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
     private final BaseHandler handler;
     private DocumentBuilder documentBuilder;
 
-    public TariffsDOMBuilder(BaseHandler handler) {
+    public DOMBuilder(BaseHandler handler) {
         super();
         this.handler = handler;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -37,39 +38,39 @@ public class TariffsDOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
         try {
             document = documentBuilder.parse(filename);
             Element root = document.getDocumentElement();
-            NodeList tariffsList = root.getElementsByTagName("tariff");
-            for (int i = 0; i < tariffsList.getLength(); i++) {
-                tariffs.add(buildTariff((Element) tariffsList.item(i)));
+            NodeList mainElementsList = root.getElementsByTagName(handler.mainElementName());
+            for (int i = 0; i < mainElementsList.getLength(); i++) {
+                handler.createMainElement();
+                Element element = (Element) mainElementsList.item(i);
+                for (String str : handler.attrs) {
+                    handler.proceedElement(str, element.getAttribute(str));
+                }
+                buildMainElement(element);
+                handler.saveMainElement();
             }
         } catch (SAXException e) {
             System.err.print("SAX parser error");
         } catch (IOException e) {
             System.err.print("I/O stream error");
         }
+        list = (List<T>) handler.getList();
     }
 
-    private Tariff buildTariff(Element tariffElement) {
-        Tariff tariff = new Tariff();
-
-        tariff.setName(tariffElement.getAttribute("name"));
-        tariff.setOperatorName(tariffElement.getAttribute("operatorName"));
-
-        tariff.setPayroll(Integer.parseInt(getElementsTextContent(tariffElement, "payroll").get(0)));
-        tariff.setSmsPrice(Integer.parseInt(getElementsTextContent(tariffElement, "smsPrice").get(0)));
-
-        List<String> callPriceStr = getElementsTextContent(tariffElement, "callPrice");
-        for (String str : callPriceStr) {
-            tariff.getCallPrice().add(Integer.parseInt(str));
+    private void buildMainElement(Element element) {
+        NodeList childNodes = element.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            if (childNodes.item(i).getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+            String childName = childNodes.item(i).getNodeName();
+            if (handler.complexElements.contains(childName)) {
+                buildMainElement((Element) childNodes.item(i));
+            } else {
+                for (String str : getElementsTextContent(element, childName)){
+                    handler.proceedElement(childName, str);
+                }
+            }
         }
-
-        TariffParameters tariffParams = new TariffParameters();
-        Element tariffParamsElement = (Element) tariffElement.getElementsByTagName("tariffParameters").item(0);
-        tariffParams.setFavNumber(getElementsTextContent(tariffParamsElement, "favNumber").get(0));
-        tariffParams.setTariffication(getElementsTextContent(tariffParamsElement, "tariffication").get(0));
-        tariffParams.setJoinPrice(Integer.parseInt(getElementsTextContent(tariffParamsElement, "joinPrice").get(0)));
-        tariff.setTariffParameters(tariffParams);
-
-        return tariff;
     }
 
     private static List<String> getElementsTextContent(Element parent, String elementName) {

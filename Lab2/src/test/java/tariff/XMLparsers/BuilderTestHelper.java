@@ -11,6 +11,7 @@ import java.util.List;
 public class BuilderTestHelper {
     static XMLBuilder builder;
     static List<Tariff> tariffs;
+
     static void checkEmpty(String typeParser) {
         builder = XMLBuilderFactory.newInstance(typeParser, new TariffHandler());
         builder.buildList("src/test/resources/emptyTariffs.xml");

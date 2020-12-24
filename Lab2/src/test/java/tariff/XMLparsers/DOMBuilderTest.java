@@ -1,7 +1,7 @@
 package tariff.XMLparsers;
 import org.junit.jupiter.api.Test;
 
-class TariffsDOMBuilderTest {
+class DOMBuilderTest {
     @Test
     public void empty() {
         BuilderTestHelper.checkEmpty("dom");
