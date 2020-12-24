@@ -1,21 +1,22 @@
 package XMLparsers.sax;
 
+import XMLparsers.BaseHandler;
 import XMLparsers.XMLBuilder;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-import tariff.TariffHandler;
 
 import java.io.IOException;
+import java.util.List;
 
-public class SAXBuilder extends XMLBuilder {
-    private final TariffHandler handler;
+public class SAXBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
+    private final BaseHandler handler;
     private XMLReader reader;
 
-    public SAXBuilder() {
+    public SAXBuilder(BaseHandler handler) {
         super();
-        handler = new TariffHandler();
+        this.handler = handler;
         try {
             reader = XMLReaderFactory.createXMLReader();
             reader.setContentHandler(handler);
@@ -33,6 +34,6 @@ public class SAXBuilder extends XMLBuilder {
         } catch (IOException e) {
             System.err.print("I/O stream error");
         }
-        tariffs = handler.getTariffs();
+        list = (List<T>) handler.getList();
     }
 }

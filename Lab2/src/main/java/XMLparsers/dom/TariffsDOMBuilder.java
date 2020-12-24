@@ -1,5 +1,6 @@
 package XMLparsers.dom;
 
+import XMLparsers.BaseHandler;
 import XMLparsers.XMLBuilder;
 import org.xml.sax.SAXException;
 import tariff.*;
@@ -16,10 +17,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class TariffsDOMBuilder<T extends Comparable<T>> extends XMLBuilder<T> {
+    private final BaseHandler handler;
     private DocumentBuilder documentBuilder;
 
-    public TariffsDOMBuilder() {
+    public TariffsDOMBuilder(BaseHandler handler) {
         super();
+        this.handler = handler;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             documentBuilder = factory.newDocumentBuilder();

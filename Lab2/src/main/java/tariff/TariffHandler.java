@@ -42,7 +42,7 @@ public class TariffHandler extends BaseHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         if (localName.equals("tariff")) {
-            tariffs.add(current);
+            saveMainElement();
         }
     }
 
@@ -86,5 +86,9 @@ public class TariffHandler extends BaseHandler {
                 throw new EnumConstantNotPresentException(currentEnum.getClass(), currentEnum.name());
 
         }
+    }
+
+    public void saveMainElement() {
+        tariffs.add(current);
     }
 }
