@@ -77,7 +77,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "smsPrice",
     "tariffParameters"
 })
-public class Tariff {
+public class Tariff implements Comparable<Tariff> {
 
     protected int payroll;
     @XmlElement(type = Integer.class)
@@ -225,4 +225,8 @@ public class Tariff {
         this.operatorName = value;
     }
 
+    @Override
+    public int compareTo(Tariff obj) {
+        return Integer.compare(this.getPayroll(), obj.getPayroll());
+    }
 }
