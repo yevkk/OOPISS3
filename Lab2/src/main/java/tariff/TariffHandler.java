@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+import XMLparsers.BaseHandler;
 import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 
-public class TariffHandler extends DefaultHandler {
+public class TariffHandler extends BaseHandler {
     private final List<Tariff> tariffs;
     private Tariff current = null;
     private TariffEnum currentEnum = null;
     private final EnumSet<TariffEnum> withText;
 
     public TariffHandler() {
+        super();
         tariffs = new ArrayList<>();
         withText = EnumSet.range(TariffEnum.PAYROLL, TariffEnum.JOINPRICE);
     }
 
-    public List<Tariff> getTariffs() {
+    @Override
+    public List<Tariff> getList() {
         return tariffs;
     }
 
@@ -48,29 +50,41 @@ public class TariffHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length) {
         String str = new String(ch, start, length).trim();
         if (currentEnum != null) {
-            switch (currentEnum) {
-                case PAYROLL:
-                    current.setPayroll(Integer.parseInt(str));
-                    break;
-                case CALLPRICE:
-                    current.getCallPrice().add(Integer.parseInt(str));
-                    break;
-                case SMSPRICE:
-                    current.setSmsPrice(Integer.parseInt(str));
-                    break;
-                case FAVNUMBER:
-                    current.getTariffParameters().setFavNumber(str);
-                    break;
-                case TARIFFICATION:
-                    current.getTariffParameters().setTariffication(str);
-                    break;
-                case JOINPRICE:
-                    current.getTariffParameters().setJoinPrice(Integer.parseInt(str));
-                    break;
-                default:
-                    throw new EnumConstantNotPresentException(currentEnum.getClass(), currentEnum.name());
-            }
+            proceedElement(currentEnum.getValue(), str);
         }
         currentEnum = null;
+    }
+
+    public void proceedElement(String elemLocalName, String elemValue) {
+        TariffEnum element = TariffEnum.valueOf(elemLocalName.toUpperCase());
+        switch (element) {
+            case NAME:
+                current.setName(elemValue);
+                break;
+            case OPERATOR_NAME:
+                current.setOperatorName(elemValue);
+                break;
+            case PAYROLL:
+                current.setPayroll(Integer.parseInt(elemValue));
+                break;
+            case CALLPRICE:
+                current.getCallPrice().add(Integer.parseInt(elemValue));
+                break;
+            case SMSPRICE:
+                current.setSmsPrice(Integer.parseInt(elemValue));
+                break;
+            case FAVNUMBER:
+                current.getTariffParameters().setFavNumber(elemValue);
+                break;
+            case TARIFFICATION:
+                current.getTariffParameters().setTariffication(elemValue);
+                break;
+            case JOINPRICE:
+                current.getTariffParameters().setJoinPrice(Integer.parseInt(elemValue));
+                break;
+            default:
+                throw new EnumConstantNotPresentException(currentEnum.getClass(), currentEnum.name());
+
+        }
     }
 }
