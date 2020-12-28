@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.lab3.FieldView
+    <com.example.lab3.BoardView
         android:id="@+id/fieldView"
         android:layout_width="330dp"
         android:layout_height="330dp"

@@ -6,13 +6,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.content.Context;
 
+import com.example.lab3.battleship.GameSetup;
 
-public class FieldView extends View {
+
+public class BoardView extends View {
     private final Paint fieldPaint;
     private float cellSize, cellDistance;
     private float hPadding, vPadding;
 
-    public FieldView(Context context, AttributeSet attrs) {
+    public BoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         fieldPaint = new Paint();
     }
@@ -37,17 +39,17 @@ public class FieldView extends View {
 
         float x = cellDistance + cellSize * 1.5f + hPadding;
         float y = cellSize + vPadding;
-        for (int i = 1; i <= 10; i++, x += cellSize + cellDistance) {
+        for (int i = 1; i <= GameSetup.boardSize; i++, x += cellSize + cellDistance) {
             canvas.drawText(String.valueOf(i), x, y, fieldPaint);
         }
 
         char symbol = 'A';
         y = cellSize + cellDistance + vPadding;
-        for (int i = 1; i <= 10; i++, y += cellSize + cellDistance) {
+        for (int i = 1; i <= GameSetup.boardSize; i++, y += cellSize + cellDistance) {
             x = cellSize * 0.5f + hPadding;
             canvas.drawText(String.valueOf(symbol++), x, y + cellSize * 0.5f + cellDistance, fieldPaint);
             x = cellSize + cellDistance + hPadding;
-            for (int j = 1; j <= 10; j++, x += cellSize + cellDistance) {
+            for (int j = 1; j <= GameSetup.boardSize; j++, x += cellSize + cellDistance) {
                 canvas.drawRect(x, y, x + cellSize, y + cellSize, fieldPaint);
             }
         }
