@@ -68,11 +68,12 @@ public class Ship {
     public boolean shoot(int x, int y) {
         if (isPlacedOn(x, y)) {
             int dist = orientation == Orientation.HORIZONTAL ? x - coordsRangeMin : y - coordsRangeMin;
-            damaged[dist] = true;
-            return true;
-        } else {
-            return false;
+            if (!damaged[dist]) {
+                damaged[dist] = true;
+                return true;
+            }
         }
+        return false;
     }
 
     public boolean isDead() {
