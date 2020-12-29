@@ -28,4 +28,18 @@ public class BoardTestHelper {
         }
         Assert.assertTrue(board.getShips().contains(ship));
     }
+
+    public static void checkShipRemoval(Board board, Ship ship) {
+        for (int i = 0; i < ship.getSize(); i++) {
+            switch (ship.getOrientation()) {
+                case VERTICAL:
+                    Assert.assertEquals(Board.CellState.EMPTY, board.getCell(ship.getCoordsSingle(), ship.getCoordsRangeMin() + i));
+                    break;
+                case HORIZONTAL:
+                    Assert.assertEquals(Board.CellState.EMPTY, board.getCell(ship.getCoordsRangeMin() + i, ship.getCoordsSingle()));
+                    break;
+            }
+        }
+        Assert.assertFalse(board.getShips().contains(ship));
+    }
 }

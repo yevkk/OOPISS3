@@ -76,51 +76,127 @@ public class BoardTest {
 
     @Test
     public void placementOverlay() {
+        BoardTestHelper.place5Ships(board);
 
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(3, Ship.Orientation.HORIZONTAL, 0, 0)));
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(2, Ship.Orientation.VERTICAL, 3, 2)));
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(1, Ship.Orientation.VERTICAL, 5, 5)));
     }
 
     @Test
     public void placementAdjacentOverlay() {
+        BoardTestHelper.place5Ships(board);
 
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(3, Ship.Orientation.HORIZONTAL, 4, 1)));
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(2, Ship.Orientation.HORIZONTAL, 4, 7)));
+        Assert.assertThrows(ShipPlacingException.class, () -> board.placeShip(new Ship(1, Ship.Orientation.HORIZONTAL, 1, 6)));
     }
 
     @Test
     public void shipsRemovalSome() {
+        BoardTestHelper.place5Ships(board);
+        Ship[] shipSequence = {
+                board.getShips().get(1),
+                board.getShips().get(3),
+                board.getShips().get(4)
+        };
 
+        for (int i = 0; i < 3; i++) {
+            Ship ship = shipSequence[i];
+            int x = (ship.getOrientation() == Ship.Orientation.HORIZONTAL) ? ship.getCoordsRangeMin() : ship.getCoordsSingle();
+            int y = (ship.getOrientation() == Ship.Orientation.HORIZONTAL) ? ship.getCoordsSingle() : ship.getCoordsRangeMin();
+            Assert.assertEquals(ship, board.removeShipOn(x, y));
+            BoardTestHelper.checkShipRemoval(board, ship);
+            Assert.assertEquals(4 - i, board.getShips().size());
+        }
     }
 
     @Test
     public void shipsRemovalAll() {
+        BoardTestHelper.place5Ships(board);
+        Ship[] shipSequence = {
+                board.getShips().get(3),
+                board.getShips().get(4),
+                board.getShips().get(2),
+                board.getShips().get(0),
+                board.getShips().get(1)
+        };
 
+        for (int i = 0; i < 3; i++) {
+            Ship ship = shipSequence[i];
+            int x = (ship.getOrientation() == Ship.Orientation.HORIZONTAL) ? ship.getCoordsRangeMin() : ship.getCoordsSingle();
+            int y = (ship.getOrientation() == Ship.Orientation.HORIZONTAL) ? ship.getCoordsSingle() : ship.getCoordsRangeMin();
+            Assert.assertEquals(ship, board.removeShipOn(x, y));
+            BoardTestHelper.checkShipRemoval(board, ship);
+            Assert.assertEquals(4 - i, board.getShips().size());
+        }
     }
 
     @Test
     public void shipsRemovalNullReturn() {
+        BoardTestHelper.place5Ships(board);
 
-    }
-
-    @Test
-    public void shootOutOfBoard() {
-
-    }
-
-    @Test
-    public void shootOnShotCell() {
-
-    }
-
-    @Test
-    public void shootInTarget() {
-
-    }
-
-    @Test
-    public void shootInTargetWithDestroying() {
-
+        Assert.assertNull(board.removeShipOn(1, 2));
+        Assert.assertNull(board.removeShipOn(4, 3));
+        Assert.assertNull(board.removeShipOn(4, 4));
+        Assert.assertNull(board.removeShipOn(4, 7));
+        Assert.assertNull(board.removeShipOn(9, 9));
     }
 
     @Test
     public void shootMissed() {
+        BoardTestHelper.place5Ships(board);
 
+        Assert.assertEquals(Board.ShotResult.MISS, board.shoot(9, 0));
+        Assert.assertEquals(Board.ShotResult.MISS, board.shoot(8, 1));
+        Assert.assertEquals(Board.ShotResult.MISS, board.shoot(6, 2));
+        Assert.assertEquals(Board.ShotResult.MISS, board.shoot(3, 7));
+    }
+
+    @Test
+    public void shootInTarget() {
+        BoardTestHelper.place5Ships(board);
+
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(2, 3));
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(7, 1));
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(9, 6));
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(9, 8));
+    }
+
+    @Test
+    public void shootInTargetWithDestroying() {
+        BoardTestHelper.place5Ships(board);
+
+        Assert.assertEquals(Board.ShotResult.DESTROYED, board.shoot(0, 0));
+
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(4, 5));
+        Assert.assertEquals(Board.ShotResult.DESTROYED, board.shoot(5, 5));
+
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(2, 3));
+        Assert.assertEquals(Board.ShotResult.IN_TARGET, board.shoot(3, 3));
+        Assert.assertEquals(Board.ShotResult.DESTROYED, board.shoot(1, 3));
+    }
+
+    @Test
+    public void shootOutOfBoard() {
+        BoardTestHelper.place5Ships(board);
+
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(10, 10));
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(-1, 6));
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(6, 15));
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(2, 20));
+    }
+
+    @Test
+    public void shootOnShotCell() {
+        BoardTestHelper.place5Ships(board);
+
+        Assert.assertNotEquals(Board.ShotResult.FAILED, board.shoot(4, 0));
+        Assert.assertNotEquals(Board.ShotResult.FAILED, board.shoot(1, 6));
+        Assert.assertNotEquals(Board.ShotResult.FAILED, board.shoot(9, 5));
+
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(4, 0));
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(1, 6));
+        Assert.assertEquals(Board.ShotResult.FAILED, board.shoot(9, 5));
     }
 }

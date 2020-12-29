@@ -57,7 +57,7 @@ public class Board {
     }
 
     public ShotResult shoot(int x, int y) {
-        if (x < 0 || x > GameSetup.boardSize || y < 0 || y > GameSetup.boardSize || cells[x][y].isShot()) {
+        if (x < 0 || x >= GameSetup.boardSize || y < 0 || y >= GameSetup.boardSize || cells[x][y].isShot()) {
             return ShotResult.FAILED;
         }
 
