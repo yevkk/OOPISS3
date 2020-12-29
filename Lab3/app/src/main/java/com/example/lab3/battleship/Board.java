@@ -49,6 +49,13 @@ public class Board {
         return ships;
     }
 
+    public CellState getCell(int x, int y) {
+        if (x < 0 || x > GameSetup.boardSize || y < 0 || y > GameSetup.boardSize) {
+            return null;
+        }
+        return cells[x][y];
+    }
+
     public ShotResult shoot(int x, int y) {
         if (x < 0 || x > GameSetup.boardSize || y < 0 || y > GameSetup.boardSize || cells[x][y].isShot()) {
             return ShotResult.FAILED;
@@ -104,12 +111,14 @@ public class Board {
             }
         }
 
-        ships.remove(removedShip);
-        boolean isHorizontal = removedShip.getOrientation() == Ship.Orientation.HORIZONTAL;
-        for(int i = 0; i < removedShip.getSize(); i++) {
-            x = isHorizontal ? removedShip.getCoordsRangeMin() + i : removedShip.getCoordsSingle();
-            y = isHorizontal ? removedShip.getCoordsSingle() : removedShip.getCoordsRangeMin() + i;
-            cells[x][y] = CellState.EMPTY;
+        if (removedShip != null) {
+            ships.remove(removedShip);
+            boolean isHorizontal = removedShip.getOrientation() == Ship.Orientation.HORIZONTAL;
+            for (int i = 0; i < removedShip.getSize(); i++) {
+                x = isHorizontal ? removedShip.getCoordsRangeMin() + i : removedShip.getCoordsSingle();
+                y = isHorizontal ? removedShip.getCoordsSingle() : removedShip.getCoordsRangeMin() + i;
+                cells[x][y] = CellState.EMPTY;
+            }
         }
 
         return removedShip;
