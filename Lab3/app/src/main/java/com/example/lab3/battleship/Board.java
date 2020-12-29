@@ -79,17 +79,15 @@ public class Board {
         int shipSize = newShip.getSize();
 
         int minX = Math.max(isHorizontal ? shipCoordsRangeMin - 1 : shipCoordsSingle - 1, 0);
-        int maxX = Math.min(isHorizontal ? shipCoordsRangeMin + shipSize : shipCoordsSingle + 1, GameSetup.boardSize);
+        int maxX = Math.min(isHorizontal ? shipCoordsRangeMin + shipSize : shipCoordsSingle + 1, GameSetup.boardSize - 1);
 
         int minY = Math.max(isHorizontal ? shipCoordsSingle - 1 : shipCoordsRangeMin - 1, 0);
-        int maxY = Math.min(isHorizontal ? shipCoordsSingle + 1 : shipCoordsRangeMin + shipSize, GameSetup.boardSize);
+        int maxY = Math.min(isHorizontal ? shipCoordsSingle + 1 : shipCoordsRangeMin + shipSize, GameSetup.boardSize - 1);
 
-        for (int x = minX; x < maxX; x++) {
-            for (int y = minY; y < maxY; y++) {
-                for (Ship ship : ships) {
-                    if (ship.isPlacedOn(x, y)) {
-                        throw new ShipPlacingException();
-                    }
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y <= maxY; y++) {
+                if (cells[x][y] == CellState.SHIP) {
+                    throw new ShipPlacingException();
                 }
             }
         }
