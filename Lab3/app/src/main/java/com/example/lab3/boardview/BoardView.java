@@ -1,4 +1,4 @@
-package com.example.lab3;
+package com.example.lab3.boardview;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -6,13 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.content.Context;
 
+import com.example.lab3.R;
 import com.example.lab3.battleship.GameSetup;
 
 
 public class BoardView extends View {
     private final Paint fieldPaint;
-    private float cellSize, cellDistance;
-    private float hPadding, vPadding;
+    protected float cellSize, cellDistance;
+    protected float hPadding, vPadding;
 
     public BoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,7 +38,11 @@ public class BoardView extends View {
         fieldPaint.setStyle(Paint.Style.FILL);
         fieldPaint.setAntiAlias(true);
 
-        float x = cellDistance + cellSize * 1.5f + hPadding;
+        drawRawBoard(canvas);
+    }
+
+    private void drawRawBoard(Canvas canvas) {
+                float x = cellDistance + cellSize * 1.5f + hPadding;
         float y = cellSize + vPadding;
         for (int i = 1; i <= GameSetup.boardSize; i++, x += cellSize + cellDistance) {
             canvas.drawText(String.valueOf(i), x, y, fieldPaint);
